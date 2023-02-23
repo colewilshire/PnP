@@ -2,46 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnScreenDebugLog : MonoBehaviour
+namespace OnScreenDebug
 {
-    private List<string> messageList = new List<string>();
-
-    #region Unity Functions
-
-    private void Start()
+    public class OnScreenDebugLog : MonoBehaviour
     {
-        DontDestroyOnLoad(gameObject);
-    }
+        public static OnScreenDebugLog Instance {get; private set;}
+        private List<string> messageList = new List<string>();
 
-    private void OnGUI()
-    {
-        PrintMessages();
-    }
+        #region Unity Functions
 
-    #endregion
-
-    public void AddOnScreenDebugMessage(string message, float? timeToDisplay)
-    {
-        messageList.Add(message);
-
-        if (timeToDisplay.HasValue)
+        private void Start()
         {
-            RemoveOnScreenDebugMessage(message, timeToDisplay.GetValueOrDefault());
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-    }
 
-    private IEnumerator RemoveOnScreenDebugMessage(string message, float timeToDisplay)
-    {
-        messageList.Remove(message);
+        private void OnGUI()
+        {
+            PrintMessages();
+        }
 
-        yield return new WaitForSeconds(timeToDisplay);
-    }
+        #endregion
 
-    private void PrintMessages()
-    {
-        foreach (string message in messageList)
-		{
-		    GUILayout.Label(message);
-		}
+        public void AddOnScreenDebugMessage(string message, float? timeToDisplay)
+        {
+            messageList.Add(message);
+
+            if (timeToDisplay.HasValue)
+            {
+                StartCoroutine(RemoveOnScreenDebugMessage(message, timeToDisplay.GetValueOrDefault()));
+            }
+        }
+
+        private IEnumerator RemoveOnScreenDebugMessage(string message, float timeToDisplay)
+        {
+            yield return new WaitForSeconds(timeToDisplay);
+            
+            messageList.RemoveAt(messageList.Count - 1);
+        }
+
+        private void PrintMessages()
+        {
+            foreach (string message in messageList)
+            {
+                GUILayout.Label(message);
+            }
+        }
     }
 }
