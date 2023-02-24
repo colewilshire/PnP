@@ -24,7 +24,7 @@ namespace OnScreenDebug
 
         #endregion
 
-        public void AddOnScreenDebugMessage(string message, float? timeToDisplay)
+        public void AddOnScreenDebugMessage(string message, float? timeToDisplay = null)
         {
             messageList.Add(message);
 

@@ -88,11 +88,10 @@ GameObject:
   - component: {fileID: 7663446467615119012}
   - component: {fileID: 7663446467615119013}
   - component: {fileID: 7663446467615119014}
-  - component: {fileID: 5714713896072398541}
-  - component: {fileID: 981596150353735506}
-  - component: {fileID: 6532818375907851049}
+  - component: {fileID: 925417978841188641}
+  - component: {fileID: 718265109481080188}
   m_Layer: 0
-  m_Name: Player
+  m_Name: DynastyCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +198,7 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &5714713896072398541
+--- !u!114 &925417978841188641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,12 +207,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7663446467615119015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59400788adcfcb44b56a892e97f334e, type: 3}
+  m_Script: {fileID: 11500000, guid: 28f6f22277f47ba47880e4157267c109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Position:
     m_InternalValue: {x: 0, y: 0, z: 0}
---- !u!114 &981596150353735506
+--- !u!114 &718265109481080188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,20 +221,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7663446467615119015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c6257afe6d14c4f9f5bcfc6b8ea5d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeCharacterHeadshot: {fileID: 0}
-  dynastCharacterHeadshot: {fileID: 0}
---- !u!114 &6532818375907851049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7663446467615119015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2831c0df122222442b998e43a00e47f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 42ce21f4eafcd2644a91e67f45a2a6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

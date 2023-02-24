@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class HeadshotRender : MonoBehaviour
 {
     private HeadshotRenderer headshotRenderer;
-    private TestPlayer player;
+    //private TestPlayer player;
     private RawImage activeCharacterHeadshot;
     private CharacterSelectionHandler character;
 
     private void Update()
     {
-        player = FindObjectOfType<TestPlayer>();
-        if (!player) return;
+        //player = FindObjectOfType<TestPlayer>();
+        //if (!player) return;
 
-        headshotRenderer = player.GetComponent<HeadshotRenderer>();
+        //headshotRenderer = player.GetComponent<HeadshotRenderer>();
 
         if (headshotRenderer)
         {

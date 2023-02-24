@@ -692,9 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1cd99794386564c89c03a853b4a557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headshotRenderer: {fileID: 0}
-  player: {fileID: 0}
-  activeCharacterHeadshot: {fileID: 0}
 --- !u!1 &1062777684
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,9 +778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1cd99794386564c89c03a853b4a557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headshotRenderer: {fileID: 0}
-  player: {fileID: 0}
-  activeCharacterHeadshot: {fileID: 0}
 --- !u!1 &1235152150
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,8 +814,18 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1235152153}
-    PlayerPrefab: {fileID: 7663446467615119015, guid: 560945a3333d3f64eb4ec0613202c7e5, type: 3}
-    NetworkPrefabs: []
+    PlayerPrefab: {fileID: 7663446467615119015, guid: 862552cedecdc26409e9f94834bc0cf5, type: 3}
+    NetworkPrefabs:
+    - Override: 0
+      Prefab: {fileID: 7663446467615119015, guid: 862552cedecdc26409e9f94834bc0cf5, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 7663446467615119015, guid: 798fa95a692c62c4d97cd0a1e7582f55, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -1064,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1636292417
 Transform:
   m_ObjectHideFlags: 0
