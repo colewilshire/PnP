@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AI;
 using OnScreenDebug;
 
 public class DynastyCharacter : NetworkBehaviour
@@ -9,68 +10,53 @@ public class DynastyCharacter : NetworkBehaviour
     //[SerializeField] public NetworkVariable<string> CharacterName = new NetworkVariable<string>("New");
     //[SerializeField] public NetworkVariable<string> DynastyName = new NetworkVariable<string>("Character");
     public NetworkVariable<Vector3> Position = new NetworkVariable<Vector3>();
+    public NetworkVariable<Vector3> Destination = new NetworkVariable<Vector3>();
+    private NavMeshAgent navMeshAgent;
 
     #region Unity Functions
 
     private void OnEnable()
     {
-        Position.OnValueChanged += OnPositionChanged;
+        Destination.OnValueChanged += OnDestinationChanged;
     }
 
     private void OnDisable()
     {
-        Position.OnValueChanged -= OnPositionChanged;
+        Destination.OnValueChanged -= OnDestinationChanged;
     }
 
     private void Start()
     {
         NetworkObject playerObject = NetworkManager.Singleton.SpawnManager.GetLocalPlayerObject();
         DynastyPlayer player = playerObject.GetComponent<DynastyPlayer>();
-    
-        //player.CharacterSelected += OnCharacterSelected;
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     #endregion
 
-    //private void OnCharacterSelected()
-    //{
-        //if (!IsOwner) return;
-        //Move();
-    //}
-
-    private void OnPositionChanged(Vector3 oldPosition, Vector3 newPosition)
+    public void SetDestination(Vector3 newDestination)
     {
-        OnScreenDebugLog.Instance.AddOnScreenDebugMessage($"{OwnerClientId} triggered on position changed.", .1f);
-
-        transform.position = newPosition;
+        ////Destination.Value = newDestination;
+        //SetDestinationServerRpc(newDestination);
+        navMeshAgent.destination = newDestination;
     }
 
-    public void Move(Vector3 newPosition)
+    private void OnDestinationChanged(Vector3 oldDestination, Vector3 newDestination)
     {
-        //Position.Value = newPosition;
+        //OnScreenDebugLog.Instance.AddOnScreenDebugMessage($"{OwnerClientId} triggered on destination changed.", .1f);
 
-        MoveServerRpc(newPosition);
+        navMeshAgent.destination = newDestination;
     }
 
     #region Server Functions
 
     [ServerRpc]
-    private void MoveServerRpc(Vector3 newPosition)
+    private void SetDestinationServerRpc(Vector3 newDestination)
     {
-        //if (IsOwner) return;
-        //Move(newPosition);
+        Destination.Value = newDestination;
 
-        Position.Value = newPosition;
+        //SetDestinationClientRpc(newDestination);
     }
-
-    // [ClientRpc]
-    // private void MoveClientRpc(Vector3 newPosition)
-    // {
-    //     //if (IsOwner) return;
-    //     //Move(newPosition);
-
-    //     Position.Value = newPosition;
-    // }
 
     #endregion
 }

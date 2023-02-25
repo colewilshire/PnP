@@ -59,7 +59,8 @@ public class NewSelectionHandler : NetworkBehaviour
             if (character.IsOwner)
             {
                 //OnScreenDebugLog.Instance.AddOnScreenDebugMessage($"Moving: {character.OwnerClientId}", .01f);
-                character.Move(hit.point);
+                //character.Move(hit.point);
+                character.SetDestination(hit.point);
             }
         }
     }
